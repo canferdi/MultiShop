@@ -1,0 +1,35 @@
+services:
+  catalogdb:
+    image: mongo:8
+    container_name: multishop-catalogdb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: multishop
+      MONGO_INITDB_ROOT_PASSWORD: multishop123
+    ports:
+      - "27017:27017"
+    volumes:
+      - catalogdb_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  mongo-express:
+    image: mongo-express:1.0.2
+    container_name: multishop-mongo-express
+    restart: unless-stopped
+    depends_on:
+      catalogdb:
+        condition: service_healthy
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://multishop:multishop123@catalogdb:27017/
+      ME_CONFIG_BASICAUTH_USERNAME: admin
+      ME_CONFIG_BASICAUTH_PASSWORD: admin
+    ports:
+      - "8081:8081"
+
+volumes:
+  catalogdb_data:

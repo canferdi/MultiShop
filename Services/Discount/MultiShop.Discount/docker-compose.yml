@@ -1,0 +1,16 @@
+services:
+  discountdb:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: multishop-discountdb
+    restart: unless-stopped
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "MultiShop_2026!"
+      MSSQL_PID: "Developer"
+    ports:
+      - "1433:1433"
+    volumes:
+      - discountdb_data:/var/opt/mssql
+
+volumes:
+  discountdb_data:

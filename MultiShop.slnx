@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Services/Catalog/MultiShop.Catalog/MultiShop.Catalog.csproj" />
+  <Project Path="Services/Discount/MultiShop.Discount/MultiShop.Discount.csproj" Id="a6a9e42a-903e-46a6-8286-a81ae90c1e9e" />
+</Solution>
