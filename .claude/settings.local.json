@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "PowerShell(try { $r = Invoke-WebRequest -Uri \"http://localhost:8081\" -UseBasicParsing -TimeoutSec 20; \"HTTP $\\($r.StatusCode\\)\" } catch { \"HATA: $\\($_.Exception.Message\\)\" })",
-      "PowerShell(\"--- MongoDB.Driver ---\"; Get-ChildItem \"$env:USERPROFILE\\\\.nuget\\\\packages\\\\mongodb.driver\" -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Name; \"--- MongoDB.Bson ---\"; Get-ChildItem \"$env:USERPROFILE\\\\.nuget\\\\packages\\\\mongodb.bson\" -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Name; \"--- MongoDB.Driver.Core ---\"; Get-ChildItem \"$env:USERPROFILE\\\\.nuget\\\\packages\\\\mongodb.driver.core\" -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Name)",
-      "Bash(dotnet build *)"
-    ]
-  }
-}
